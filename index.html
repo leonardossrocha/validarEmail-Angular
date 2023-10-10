@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Validação de e-mail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
 
 <body>
-
     <h2>Validação de e-mail</h2>
+    <div class="container align-self-center d-flex justify-content-center">
+        <div class="align-midle">
+            <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
 
-    <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
-
-        <p>Email:<br>
-            <input type="email" name="email" ng-model="email" required>
-            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
-                <span ng-show="myForm.email.$error.required">Um e-mail é necessário.</span>
-                <span ng-show="myForm.email.$error.email">Endereço de e-mail inválido.</span>
-            </span>
-        </p>
-
-        <p>
-            <input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
+                <p>Email:<br>
+                    <input type="email" name="email" ng-model="email" required>
+                    <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                        <span ng-show="myForm.email.$error.required">Um e-mail é necessário.</span>
+                        <span ng-show="myForm.email.$error.email">Endereço de e-mail inválido.</span>
+                    </span>
+                </p>
+                <p>
+                    <input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
 myForm.email.$dirty && myForm.email.$invalid" value='Testar'>
-        </p>
-
-    </form>
-
+                </p>
+            </form>
+        </div>
+    </div>
     <script>
         var app = angular.module('myApp', []);
         app.controller('validateCtrl', function ($scope) {
